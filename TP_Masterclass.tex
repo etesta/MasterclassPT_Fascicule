@@ -30,10 +30,27 @@
 
 Ce TP a pour but de vous faire découvrir la planification de traitement de tumeurs cancéreuses par radiothérapie et de mettre en évidence les principaux avantages des irradiations par faisceaux de photons de protons et d'ions carbone.
 
-\begin{framed}
-  Pour ce TP, nous allons utiliser un serveur de calcul sur lequel est installé le logiciel matRad. L'accès à ce serveur de calcul (sous Linux) s'effectue via le logiciel \g{X2Go} (cf. Annexe). 
+\section{Préambule}
 
-\end{framed}
+\paragraph{Lancement des logiciels X2Go et matRad}
+
+Pour ce TP, nous allons utiliser un serveur de calcul sur lequel est installé le logiciel matRad. L'accès à ce serveur de calcul (sous Linux) s'effectue via le logiciel \g{X2Go} (cf. Annexe). 
+
+\begin{itemize}
+	\item Démarrer le logiciel X2go et créer un nouvelle session avec les informations (login/mdp) que l'on vous a envoyées. L'adresse IP du serveur est : 193.54.49.211 (cf. Figure~\ref{ConfigX2Go}).	Penser à définir le \textbf{type de session comme \g{XFCE}} (dernier menu en bas de la fenêtre de configuration).
+	\item Entrer ensuite votre login/mdp dans le menu d'ouverture de session
+	\item Une fois dans l'environnement de travail (Figure~\ref{Bureau}), ouvrir un terminal (cliquer sur le deuxième icône à partir de la gauche, tout en bas du bureau) et lancer le logiciel matRad en tapant : \texttt{matrad}
+	\item \tcr{Bien penser à la fin du TP à se déconnecter proprement de X2Go : pour cela, sortir de la session (\g{Log out}) puis fermer X2Go.}
+\end{itemize}
+
+\begin{figure}
+  \centering
+  \subfloat[Configuration de X2Go.]
+  {\label{ConfigX2Go}\includegraphics[height=.2\textheight]{./Figures/ConfigX2Go} }    
+  \subfloat[Environnement de travail]{\label{Bureau}\includegraphics[height=.2\textheight]{./Figures/Bureau}}  
+  \caption{Configuration de X2Go et environnement de travail.}
+\end{figure} 	
+
 
 \section{Comparaison des traitements par faisceaux de photons, protons et ions carbone (tumeur du foie)}
 
@@ -208,30 +225,6 @@ Commencer avec 5 champs d'irradiations avant de réduire éventuellement le nombre
 \end{reponse}
 
 \end{questions}
-
-\section{Annexe}
-
-\paragraph{Lancement des logiciels X2Go et matRad}
-
-\begin{itemize}
-	\item Démarrer le logiciel X2go et créer un nouvelle session avec les informations (login/mdp) que l'on vous a envoyées. L'adresse IP du serveur est : 193.54.49.211 (cf. Figure~\ref{ConfigX2Go}).	Penser à définir le \textbf{type de session comme \g{XFCE}} (dernier menu en bas de la fenêtre de configuration).
-	\item Entrer ensuite votre login/mdp dans le menu d'ouverture de session
-	\item Une fois dans l'environnement de travail (Figure~\ref{Bureau}), ouvrir un terminal (cliquer sur le deuxième icône à partir de la gauche, tout en bas du bureau) et lancer le logiciel matRad en tapant : \texttt{matrad}
-	\item \tcr{Bien penser à la fin du TP à se déconnecter proprement de X2Go : pour cela, sortir de la session (\g{Log out}) puis fermer X2Go.}
-\end{itemize}
-  
-\begin{figure}[htp]
-  \centering
-  \subfloat[Configuration de X2Go.]
-  {\label{ConfigX2Go}\includegraphics[height=.2\textheight]{./Figures/ConfigX2Go} }    
-  \subfloat[Environnement de travail]{\label{Bureau}\includegraphics[height=.2\textheight]{./Figures/Bureau}}  
-  \caption{Configuration de X2Go et environnement de travail.}
-  \label{Dispositif}
-\end{figure} 
-  
-  
-
-
 
 
 
