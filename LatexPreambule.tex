@@ -1,0 +1,180 @@
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{tocloft}
+\usepackage{caption}
+\usepackage{alltt}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsbsy,amssymb,empheq}
+% \newtheorem{theo}{Théoréme}   % Environnement theoreme
+% \usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{listings,comment}
+\usepackage{tabularx} % Pour avoir des tableaux d'une largeur bien définie
+\usepackage{multirow} % pour faire fusionner des lignes dans des tableaux
+\usepackage[babel=true]{csquotes} % csquotes va utiliser la langue définie dans babel
+\usepackage[rightcaption]{sidecap}% Pour utiliser SCfigure (figure encadree)
+\usepackage[squaren,Gray]{SIunits} % pour avoir de jolies unités
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{xifthen}
+\usepackage[makeroom]{cancel}
+\usepackage{csquotes}
+\usepackage{subfig} % Pour avoir des sous-figures
+\usepackage{bigints}
+\usepackage{float}
+\usepackage{icomma} 
+\usepackage{textcomp} 
+
+\usepackage{sectsty}
+%\allsectionsfont{\color{blue}\itshape\underline}
+% \sectionfont{\color{red}\itshape\selectfont}
+\sectionfont{\color{red}}
+\subsectionfont{\color{blue}}
+
+
+\everymath{\displaystyle}
+
+
+
+% Format des pages
+%\pagestyle{headings}  
+\oddsidemargin  -1cm
+\evensidemargin -1cm
+\textwidth 17cm % A ajuster pour les commentaires dans la marge
+% \textwidth 18cm
+\topmargin -2cm
+\textheight 26cm
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
+
+
+% -------------------------------------------------------------------------------
+
+\newenvironment{etapes}{%
+  \begin{itemize}
+  \def\etape{\item[\textbullet] }
+}{
+  \end{itemize}
+}
+
+% fonction rectangle
+\newcommand{\sinc}[0]{\mathrm{sinc}}
+
+% quotation marks
+\newcommand{\g}[1]{\og#1\fg}
+
+% Rightarrow
+\newcommand{\Ra}[0]{\Rightarrow}
+
+\newcommand{\ora}[1]{\overrightarrow{#1}} 
+
+\newcommand{\er}{\ensuremath{\va*{e}_{r}}}
+\newcommand{\etheta}{\ensuremath{\va*{e}_{\theta}}}
+\newcommand{\ephi}{\ensuremath{\va*{e}_{\varphi}}}
+\newcommand{\vr}{\ensuremath{\va{r}}}
+
+\newcommand{\ex}{\ensuremath{\va*{e}_{x}}}
+\newcommand{\ey}{\ensuremath{\va*{e}_{y}}}
+\newcommand{\ez}{\ensuremath{\va*{e}_{z}}}
+
+
+% \noyau{C}{12}{6} pour le carbone
+\newcommand{\noyau}[3]{\prescript{#2}{#3}{\mathrm{#1}}} 
+
+\newcommand{\id}[1]{\mathrm{#1}}  
+
+\newcommand{\mr}[2]{\multirow{#1}{*}{#2}}  
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}  
+
+% texte en couleur
+\newcommand{\tc}[2]{\textcolor{#1}{#2}}
+\newcommand{\tcb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tcr}[1]{\textcolor{red}{#1}}
+
+\newcommand{\al}[0]{
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}    
+}
+
+\newcounter{otheryear}
+\setcounter{otheryear}{\the\year}
+\ifthenelse{\cnttest{\month}{>}{6}}{\addtocounter{otheryear}{1}}{\addtocounter{otheryear}{-1}}
+\def\semestre{\ifthenelse{\cnttest{\month}{>}{6}}{\the\year -\theotheryear}{\theotheryear -\the\year}}
+\graphicspath{{Figures/}}
+
+\usepackage{fancyhdr}
+\fancypagestyle{thetitlepage}{
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+
+
+% Environnement ``reponse'' et questions
+\usepackage{framed} % Pour encadrer du texte
+\setlength{\FrameRule}{\fboxrule}
+\setlength{\FrameSep}{3\fboxsep}
+
+%\patchcmd\chapter{\null\vfil}{}{}{}
+% Environnement ``question'' recupere du package ``exam.sty''
+% compteur pour numéroter les questions à la suite dans un même TP.
+\newcounter{numQuestion}
+\newcommand{\resetQuestions}{\setcounter{numQuestion}{1}}
+\resetQuestions 
+
+\newenvironment{questions}[1][start=\thenumQuestion]%
+{%
+  \setlength{\leftmargini}{6pt}
+  \setlength{\leftmarginii}{8mm}
+  \setlength{\leftmarginiii}{10mm}
+  \renewcommand{\labelenumi}{{\bf \theenumi.}}
+  \renewcommand{\labelenumiii}{(\theenumiii)}
+
+  % Cadre autour de l'environnement ``questions''
+  % \begin{framed}\begin{enumerate}[#1]\addtolength{\itemsep}{2mm}
+  % \def\question{\item}\let\ques\question}
+  % {\end{enumerate}\end{framed}}
+  % Pas de cadre autour de l'environnement ``questions''
+  \begin{enumerate}[#1]\addtolength{\itemsep}{2mm}
+  \def\question{\item}\let\ques\question
+}%
+{%
+  \setcounter{numQuestion}{\theenumi}
+  \addtocounter{numQuestion}{1}
+  \end{enumerate}
+}
+
+\newenvironment{reponse}
+{ %\leftskip1.5em
+  \begin{framed}\color{blue}%
+  }{%
+%  \vspace{-2pt}% ajustement d'espacement en bas  
+  \color{black}\end{framed}%
+}
+
+\newenvironment{reponsefigure} 
+{ %\leftskip1.5em   
+  \begin{figure}%
+  }{% %  \vspace{-2pt}
+  % ajustement d'espacement en bas    
+  \end{figure}% 
+}
+
+\newenvironment{reponseSCfigure} 
+{ %\leftskip1.5em
+  \begin{SCfigure}%
+  }{%
+%  \vspace{-2pt}% ajustement d'espacement en bas  
+  \end{SCfigure}%
+}
